@@ -6,11 +6,13 @@ export default function Progress(
 ) {
   const [rep, setRep] = useState(0);
 
-  useEffect(() => {
-    setRep(Number(window.localStorage.getItem("rep")));
-  }, []);
-
   const repRef = useRef(rep);
+
+  useEffect(() => {
+    const storedRep = Number(window.localStorage.getItem("rep"));
+    setRep(storedRep);
+    repRef.current = storedRep;
+  }, []);
 
   const WR = 8000;
   const goal = 12000;
