@@ -35,7 +35,7 @@ export default function Progress(
         debounce = true;
         setTimeout(() => {
           debounce = false;
-        }, 0);
+        }, 2000);
       }
 
       if (onTheBar) {
