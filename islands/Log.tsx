@@ -1,12 +1,16 @@
 import { Signal } from "@preact/signals";
+import { Button } from "../components/Button.tsx";
 
 export default function Log(
   props: { log: Signal<{ time: number; status: "On" | "Off"; rep: number }[]> },
 ) {
   return (
     <div class="flex flex-col p-2">
-      <div class="mb-2">Latest 20</div>
-      {props.log.value.filter((item, index) => index < 20).map((item) => {
+      <div class="flex justify-between mb-2 items-center">
+        <div>Latest 10</div>
+        <Button>Export full log</Button>
+      </div>
+      {props.log.value.filter((item, index) => index < 10).map((item) => {
         return (
           <div key={item.time}>
             <div
