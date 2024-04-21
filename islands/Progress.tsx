@@ -4,16 +4,13 @@ import { useEffect, useRef, useState } from "preact/hooks";
 export default function Progress(
   props: { log: Signal<{ time: number; status: "On" | "Off"; rep: number }[]> },
 ) {
-  const [rep, setRep] = useState(Number(window.localStorage.getItem("rep")));
-  const repRef = useRef(rep);
+  const [rep, setRep] = useState(0);
 
-  const allLog = JSON.parse(
-    atob(window.localStorage.getItem("WR") || "") || "[]",
-  ).map(
-    (
-      item: { a: number; b: string; c: string },
-    ) => ({ time: item.a, status: item.b, rep: item.c }),
-  );
+  useEffect(() => {
+    setRep(Number(window.localStorage.getItem("rep")));
+  }, []);
+
+  const repRef = useRef(rep);
 
   const WR = 8000;
   const goal = 12000;
@@ -21,6 +18,15 @@ export default function Progress(
 
   useEffect(() => {
     let debounce = false;
+
+    const allLog = JSON.parse(
+      atob(window.localStorage.getItem("WR") || "") || "[]",
+    ).map(
+      (
+        item: { a: number; b: string; c: string },
+      ) => ({ time: item.a, status: item.b, rep: item.c }),
+    );
+
     let onTheBar = allLog[0]?.status === "On";
 
     const onKeyEvent = (event: KeyboardEvent) => {
