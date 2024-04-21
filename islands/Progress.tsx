@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from "preact/hooks";
 export default function Progress(
   props: { log: Signal<{ time: number; status: "On" | "Off"; rep: number }[]> },
 ) {
-  const [rep, setRep] = useState(Number(localStorage.getItem("rep")));
+  const [rep, setRep] = useState(Number(window.localStorage.getItem("rep")));
   const repRef = useRef(rep);
 
-  const allLog = JSON.parse(atob(localStorage.getItem("WR") || "") || "[]").map(
+  const allLog = JSON.parse(
+    atob(window.localStorage.getItem("WR") || "") || "[]",
+  ).map(
     (
       item: { a: number; b: string; c: string },
     ) => ({ time: item.a, status: item.b, rep: item.c }),
@@ -64,8 +66,8 @@ export default function Progress(
         b: item.status,
         c: item.rep,
       }));
-      localStorage.setItem("rep", repRef.current.toString());
-      localStorage.setItem("WR", btoa(JSON.stringify(minifiedLog)));
+      window.localStorage.setItem("rep", repRef.current.toString());
+      window.localStorage.setItem("WR", btoa(JSON.stringify(minifiedLog)));
     };
 
     document.addEventListener("keydown", onKeyEvent);
