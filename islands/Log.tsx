@@ -8,7 +8,13 @@ export default function Log(
     <div class="flex flex-col p-2">
       <div class="flex justify-between mb-2 items-center">
         <div>Latest 10</div>
-        <Button>Export full log</Button>
+        <Button
+          onClick={() => {
+            alert("export not yet implemeted");
+          }}
+        >
+          Export full log
+        </Button>
       </div>
       {props.log.value.filter((item, index) => index < 10).map((item) => {
         return (
