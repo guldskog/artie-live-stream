@@ -17,7 +17,7 @@ export default function Progress(
     repRef.current = storedRep;
   }, []);
 
-  const WR = 8000;
+  const WR = 8940;
   const goal = 12000;
   const max = 17000;
   const currentPaceEstimate = (minutesLeft * currentPace) + rep;
