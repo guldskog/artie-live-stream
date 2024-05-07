@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 export default function Progress(
   props: { log: Signal<{ time: number; status: "On" | "Off"; rep: number }[]> },
 ) {
+  const [time, setTime] = useState("00:00:00");
   const [rep, setRep] = useState(0);
   const [currentPace, setCurrentPace] = useState(10);
   const [minutesLeft, setMinutesLeft] = useState(24 * 60);
@@ -114,58 +115,83 @@ export default function Progress(
     };
   }, []);
 
+  useEffect(() => {
+    const updateTime = () => {
+      const dateObject = new Date();
+
+      const hour = dateObject.getHours();
+      const minute = dateObject.getMinutes();
+      const second = dateObject.getSeconds();
+
+      const currentTime = (hour < 10 ? `0${hour}` : hour) + ":" +
+        (minute < 10 ? `0${minute}` : minute) +
+        ":" +
+        (second < 10 ? `0${second}` : second);
+
+      setTime(currentTime);
+    };
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  }, []);
+
   return (
     <div class="fixed bottom-0 w-full">
-      <div class="bg-white p-2">
-        <table>
-          <tr>
-            <th>Pace</th>
-            <th>Estimate</th>
-          </tr>
-          <tr>
-            <td>10 {currentPace === 10 && "🔥"}</td>
-            <td>{(minutesLeft * 10) + rep}</td>
-          </tr>
-          <tr>
-            <td>9 {currentPace === 9 && "🔥"}</td>
-            <td>{(minutesLeft * 9) + rep}</td>
-          </tr>
-          <tr>
-            <td>8 {currentPace === 8 && "🔥"}</td>
-            <td>{(minutesLeft * 8) + rep}</td>
-          </tr>
-          <tr>
-            <td>7 {currentPace === 7 && "🔥"}</td>
-            <td>{(minutesLeft * 7) + rep}</td>
-          </tr>
-          <tr>
-            <td>6 {currentPace === 6 && "🔥"}</td>
-            <td>{(minutesLeft * 6) + rep}</td>
-          </tr>
-          <tr>
-            <td>5 {currentPace === 5 && "🔥"}</td>
-            <td>{(minutesLeft * 5) + rep}</td>
-          </tr>
-          <tr>
-            <td>4 {currentPace === 4 && "🔥"}</td>
-            <td>{(minutesLeft * 4) + rep}</td>
-          </tr>
-          <tr>
-            <td>3 {currentPace === 3 && "🔥"}</td>
-            <td>{(minutesLeft * 3) + rep}</td>
-          </tr>
-          <tr>
-            <td>2 {currentPace === 2 && "🔥"}</td>
-            <td>{(minutesLeft * 2) + rep}</td>
-          </tr>
-          <tr>
-            <td>1 {currentPace === 1 && "🔥"}</td>
-            <td>{(minutesLeft * 1) + rep}</td>
-          </tr>
-        </table>
+      <div class="flex">
+        <div class="bg-red-50 p-2 w-32">
+          <table>
+            <tr>
+              <th>Pace</th>
+              <th>Estimate</th>
+            </tr>
+            <tr>
+              <td>10 {currentPace === 10 && "🔥"}</td>
+              <td>{(minutesLeft * 10) + rep}</td>
+            </tr>
+            <tr>
+              <td>9 {currentPace === 9 && "🔥"}</td>
+              <td>{(minutesLeft * 9) + rep}</td>
+            </tr>
+            <tr>
+              <td>8 {currentPace === 8 && "🔥"}</td>
+              <td>{(minutesLeft * 8) + rep}</td>
+            </tr>
+            <tr>
+              <td>7 {currentPace === 7 && "🔥"}</td>
+              <td>{(minutesLeft * 7) + rep}</td>
+            </tr>
+            <tr>
+              <td>6 {currentPace === 6 && "🔥"}</td>
+              <td>{(minutesLeft * 6) + rep}</td>
+            </tr>
+            <tr>
+              <td>5 {currentPace === 5 && "🔥"}</td>
+              <td>{(minutesLeft * 5) + rep}</td>
+            </tr>
+            <tr>
+              <td>4 {currentPace === 4 && "🔥"}</td>
+              <td>{(minutesLeft * 4) + rep}</td>
+            </tr>
+            <tr>
+              <td>3 {currentPace === 3 && "🔥"}</td>
+              <td>{(minutesLeft * 3) + rep}</td>
+            </tr>
+            <tr>
+              <td>2 {currentPace === 2 && "🔥"}</td>
+              <td>{(minutesLeft * 2) + rep}</td>
+            </tr>
+            <tr>
+              <td>1 {currentPace === 1 && "🔥"}</td>
+              <td>{(minutesLeft * 1) + rep}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="bg-white grid items-center pl-4 w-72 border">
+          <div class="text-6xl">{time}</div>
+        </div>
       </div>
-      <div class="h-[120px] w-full bg-blue-100">
-        <div class="h-10 w-full relative bg-blue-200 top-10">
+      <div class="h-[192px] w-full bg-slate-50">
+        <div class="h-16 w-full relative bg-slate-200 top-16">
           <div
             style={{ width: `${rep / max * 100}%` }}
             class="absolute h-full bg-red-400 flex items-center"
@@ -175,7 +201,7 @@ export default function Progress(
             style={{ left: `${WR / max * 100}%` }}
             class="absolute -translate-x-1/2 top-full p-2 text-nowrap"
           >
-            <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-full bg-red-500 w-2 h-full">
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-full bg-red-500 w-2 h-16">
             </div>
             WR - {WR}
           </div>
@@ -183,21 +209,23 @@ export default function Progress(
             style={{ left: `${goal / max * 100}%` }}
             class="absolute -translate-x-1/2 top-full p-2 text-nowrap"
           >
-            <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-full bg-green-500 w-2 h-full">
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-full bg-green-500 w-2 h-16">
             </div>
             Goal - {goal}
           </div>
           <div
             style={{ left: `${currentPaceEstimate / max * 100}%` }}
-            class="absolute -translate-x-1/2 bottom-full p-2 text-nowrap"
+            class="absolute -translate-x-1/2 bottom-full p-2 flex h-16 items-center"
           >
-            Current Pace Estimate - {currentPaceEstimate}
-            <div class="absolute left-1/2 -translate-x-1/2 top-[200%] -translate-y-full bg-orange-500 w-2 h-full">
+            <div class="text-nowrap text-lg">
+              Current Pace Estimate - {currentPaceEstimate}
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-[200%] -translate-y-full bg-orange-500 w-2 h-16">
             </div>
           </div>
           <div
             style={{ left: `${rep / max * 100}%` }}
-            class="absolute flex left-0 h-full items-center px-2 text-xl text-nowrap"
+            class="absolute flex left-0 h-full items-center px-2 text-2xl text-nowrap"
           >
             {rep}
           </div>

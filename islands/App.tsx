@@ -17,7 +17,7 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div class="pb-56">
       <Log log={log} />
       <Progress log={log} />
     </div>
