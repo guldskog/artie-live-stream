@@ -187,10 +187,10 @@ export default function Progress(
           </table>
         </div>
         <div class="bg-white grid items-center pl-4 w-72 border">
-          <div class="text-6xl">{time}</div>
+          <div class="text-6xl font-bold">{time}</div>
         </div>
       </div>
-      <div class="h-[192px] w-full bg-slate-50">
+      <div class="h-[192px] w-full bg-slate-50 font-medium">
         <div class="h-16 w-full relative bg-slate-200 top-16">
           <div
             style={{ width: `${rep / max * 100}%` }}
