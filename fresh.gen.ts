@@ -10,7 +10,10 @@ import * as $index from "./routes/index.tsx";
 import * as $App from "./islands/App.tsx";
 import * as $Log from "./islands/Log.tsx";
 import * as $NewApp from "./islands/NewApp.tsx";
+import * as $NewLog from "./islands/NewLog.tsx";
+import * as $NewProgress from "./islands/NewProgress.tsx";
 import * as $Progress from "./islands/Progress.tsx";
+import * as $Victory from "./islands/Victory.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -25,7 +28,10 @@ const manifest = {
     "./islands/App.tsx": $App,
     "./islands/Log.tsx": $Log,
     "./islands/NewApp.tsx": $NewApp,
+    "./islands/NewLog.tsx": $NewLog,
+    "./islands/NewProgress.tsx": $NewProgress,
     "./islands/Progress.tsx": $Progress,
+    "./islands/Victory.tsx": $Victory,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

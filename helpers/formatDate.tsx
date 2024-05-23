@@ -1,0 +1,11 @@
+export const formatDate = (date: Date) => {
+  const year = date.getFullYear();
+  const month = date.toLocaleString("default", { month: "long" });
+  const day = date.getDate();
+
+  const hours = date.getHours();
+  const period = hours >= 12 ? "pm" : "am";
+  const adjustedHour = hours % 12 === 0 ? 12 : hours % 12;
+
+  return `started on ${month.toLowerCase()} ${day} ${year} at ${adjustedHour}${period} CET`;
+};
