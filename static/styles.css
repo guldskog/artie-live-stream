@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-zinc-900 text-white font-input-sans-regular uppercase leading-none;
+  }
+
+  @font-face {
+    font-family: 'input_sans_compressedmedium';
+    src: url('fonts/inputsanscompressed-medium-webfont.woff2') format('woff2'),
+         url('fonts/inputsanscompressed-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'input_sans_compressedregular';
+    src: url('fonts/inputsanscompressed-regular-webfont.woff2') format('woff2'),
+         url('fonts/inputsanscompressed-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
