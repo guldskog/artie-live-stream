@@ -32,6 +32,9 @@ export default function App() {
     [],
   );
 
+  const updateCountdown = (currentTime: Date) =>
+    countdown.value = countdownFrom24Hours(currentTime);
+
   useEffect(() => {
     log.value = JSON.parse(
       atob(window.localStorage.getItem("log") || "") || "[]",
@@ -42,11 +45,15 @@ export default function App() {
     if (log.value[0]) {
       progress.value = log.value[0].progress + log.value[0].pace;
       pace.value = log.value[0].pace ? log.value[0].pace : 10;
+      active.value = log.value[0].seconds === 0;
+
+      updateCountdown(new Date(log.value[log.value.length - 1].time));
+      setInterval(
+        () => updateCountdown(new Date(log.value[log.value.length - 1].time)),
+        1000,
+      );
     }
   }, []);
-
-  const updateCountdown = (currentTime: Date) =>
-    countdown.value = countdownFrom24Hours(currentTime);
 
   useEffect(() => {
     let debounce = false;
@@ -85,16 +92,18 @@ export default function App() {
     const onKeyEvent = (event: KeyboardEvent) => {
       event.preventDefault();
 
-      if (debounce) {
-        return;
-      } else {
-        debounce = true;
-        setTimeout(() => {
-          debounce = false;
-        }, 0);
-      }
-
       const space = event.key === " ";
+
+      if (space) {
+        if (debounce) {
+          return;
+        } else {
+          debounce = true;
+          setTimeout(() => {
+            debounce = false;
+          }, 500);
+        }
+      }
 
       if (space && !countdown.value) {
         const currentTime = new Date();
