@@ -1,12 +1,11 @@
-import ErrorLog from "./ErrorLog.tsx";
-import SeriesLog from "./SeriesLog.tsx";
-import { LogItem } from "./NewApp.tsx";
 import { Signal } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
 import { logToCSV } from "../helpers/arrayToCSV.ts";
 import { downloadCSV } from "../helpers/downloadCSV.ts";
 import { formatDateTime } from "../helpers/formatDateTime.ts";
-import { currentWR } from "../helpers/constants.ts";
+import ErrorLog from "./ErrorLog.tsx";
+import { LogItem } from "./NewApp.tsx";
+import SeriesLog from "./SeriesLog.tsx";
 interface Props {
   pace: Signal<number>;
   log: Signal<LogItem[]>;
