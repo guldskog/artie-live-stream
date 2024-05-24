@@ -98,7 +98,7 @@ export default function Progress(props: Props) {
                   <div class="h-[1px] w-[69px] relative -left-[9px] bg-orange-400">
                   </div>
                 </div>
-                <div class="bg-[#FB923C] flex-grow w-full rounded-b-[3px]">
+                <div class="bg-gradient-to-t from-yellow-300 via-yellow-400 to-orange-400 before:content-[''] before:inset-0 before:absolute before:z-10 before:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yMDAxXzE1MzIpIj4KPHBhdGggZD0iTTE0LjE0IDBMMCAxNC4xNFYwSDE0LjE0Wk0xMDAgMEg4NS44NkwwIDg1Ljg2VjEwMEgxNC4xNEwxMDAgMTQuMTRWMFpNMTAwIDg1Ljg2TDg1Ljg2IDEwMEgxMDBWODUuODZaIiBmaWxsPSIjMjMxRjIwIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMjAwMV8xNTMyIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==')] before:bg-repeat before:animate-stripe-move before:bg-[length:8px_auto] before:opacity-30 before:mix-blend-overlay shadow-[inset_0_0_0_1px_rgb(255_255_255_/_25%)] flex-grow w-full rounded-b-[3px]">
                 </div>
               </div>
             </div>

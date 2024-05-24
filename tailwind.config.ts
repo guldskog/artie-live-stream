@@ -13,6 +13,19 @@ export default {
           "sans-serif",
         ],
       },
+      animation: {
+        "stripe-move": "stripeMove 300ms linear infinite both",
+      },
+      keyframes: {
+        stripeMove: {
+          "0%": {
+            backgroundPosition: "-8px 0",
+          },
+          "100%": {
+            backgroundPosition: "0 0",
+          },
+        },
+      },
     },
   },
   content: [

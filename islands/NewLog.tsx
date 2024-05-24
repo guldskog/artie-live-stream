@@ -58,7 +58,7 @@ export default function Log(props: Props) {
           </div>
         </div>
         <div class="flex gap-3">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10000].map((number) => {
             return (
               <div
                 key={number}

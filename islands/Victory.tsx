@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { formatDate } from "../helpers/formatDate.tsx";
 import { formatNumberWithCommas } from "../helpers/formatNumberWithCommas.ts";
 
@@ -18,11 +18,41 @@ export default function Victory(props: Props) {
     } else {
       setWrBrokenAt(window.localStorage.getItem("record-time") || "");
     }
+
+    // deno-lint-ignore no-explicit-any
+    const myConfetti = (window as any).confetti.create(
+      document.getElementById("confetti"),
+      {
+        resize: true,
+        useWorker: true,
+      },
+    );
+    const runConfetti = () => {
+      myConfetti({
+        particleCount: 100,
+        startVelocity: 30,
+        spread: 360,
+        origin: {
+          x: Math.random(),
+          y: Math.random() - 0.2,
+        },
+      });
+    };
+
+    runConfetti();
+    const interval = setInterval(() => {
+      runConfetti();
+    }, 1700);
+
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 1000 * 60);
   }, []);
 
   return (
-    <div class="flex flex-col justify-center bg-orange-400 h-screen">
-      <div class="w-[384px] flex p-5 gap-5 flex-col text-center text-zinc-900 text-[17px]">
+    <div class="flex flex-col justify-center bg-orange-400 h-screen relative">
+      <canvas class="absolute w-full h-full" id="confetti" />
+      <div class="relative w-[384px] flex p-5 gap-5 flex-col text-center text-zinc-900 text-[17px]">
         <div>
           <img
             class="w-[217px] ml-[57px]"
