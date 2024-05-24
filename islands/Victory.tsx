@@ -55,28 +55,28 @@ export default function Victory(props: Props) {
       <div class="relative w-[384px] flex p-5 gap-5 flex-col text-center text-zinc-900 text-[17px]">
         <div>
           <img
-            class="w-[217px] ml-[57px]"
+            class="w-[150px] ml-[90px]"
             src="./artie-image-winner.png"
-            alt="Artie Christensen new WR"
+            alt="Artie Christenson new WR"
           />
         </div>
         <div class="w-[150px] mx-auto">
           {wrBrokenAt}
         </div>
-        <div class="text-[47px]">
+        <div class="text-3xl">
           Artie<br />
           Christensen
         </div>
         <div>broke the</div>
-        <div class="text-[47px]">
+        <div class="text-3xl">
           world<br />record
         </div>
         <div>of the most</div>
-        <div class="text-[47px]">PULL-ups</div>
+        <div class="text-3xl">PULL-ups</div>
         <div>in 24 hours</div>
         <div class="w-full bg-zinc-700 h-[1px] opacity-20"></div>
         <div>total nb of pull-ups</div>
-        <div class="text-[47px]">
+        <div class="text-3xl">
           {formatNumberWithCommas(props.progress.value)}
           <span class="absolute">
             <sup>*</sup>
@@ -87,7 +87,7 @@ export default function Victory(props: Props) {
         </div>
         <div class="w-full bg-zinc-700 h-[1px] opacity-20"></div>
         <div>time remaining</div>
-        <div class="text-[47px]">{props.countdown.value}</div>
+        <div class="text-3xl">{props.countdown.value}</div>
       </div>
     </div>
   );

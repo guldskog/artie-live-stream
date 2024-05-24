@@ -21,7 +21,7 @@ export default function Progress(props: Props) {
               <img
                 class="w-[50px] absolute left-[10px] -bottom-[5px]"
                 src="./image-artie.png"
-                alt="Artie Christensen"
+                alt="Artie Christenson"
               />
               <img
                 class="w-[18px] absolute -top-[12px] left-[63px]"
@@ -29,14 +29,14 @@ export default function Progress(props: Props) {
                 alt="Arrow Icon"
               />
               <div class="pl-[78px] h-[38px] leading-[110%]">
-                Artie Christensen<br /> is breaking the
+                Artie Christenson<br /> is breaking the
               </div>
             </div>
-            <div class="text-[47px] h-[104px] leading-[110%] text-orange-400 text-center">
-              world record
+            <div class="text-[40px] leading-[110%] text-orange-400 text-center">
+              world<br />record
             </div>
             <div class="text-center">of the most</div>
-            <div class="text-center text-[47px] text-orange-400">
+            <div class="text-center text-[40px] text-orange-400">
               PULL-ups
             </div>
             <div class="text-center">in 24 hours</div>
@@ -44,7 +44,7 @@ export default function Progress(props: Props) {
           <div class="bg-zinc-700 h-[1px] w-full"></div>
           <div class="pt-11 pb-11 text-center flex flex-col gap-2">
             <div class="text-[17px] leading-[110%]">Total nb of pull-ups</div>
-            <div class="text-[45px] text-orange-400 h-[50px] leading-none">
+            <div class="text-[40px] text-orange-400 h-[50px] leading-none">
               {formatNumberWithCommas(props.progress.value)}
             </div>
             <div class="text-[17px] text-zinc-500 leading-[110%]">
@@ -55,7 +55,7 @@ export default function Progress(props: Props) {
           <div class="bg-zinc-700 h-[1px] w-full"></div>
           <div class="pt-11 pb-11 text-center flex flex-col gap-2">
             <div class="text-[17px] leading-[110%]">time to finish</div>
-            <div class="text-[45px] text-orange-400 h-[50px] leading-none">
+            <div class="text-[40px] text-orange-400 h-[50px] leading-none">
               {props.countdown.value !== undefined
                 ? props.countdown.value
                 : "waiting"}
