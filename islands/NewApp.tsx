@@ -24,7 +24,7 @@ export interface StoredLogItem {
 export default function App() {
   const startTime = useSignal<Date | undefined>(undefined);
   const countdown = useSignal<string | undefined>(undefined);
-  const progress = useSignal<number>(5000);
+  const progress = useSignal<number>(0);
   const pace = useSignal<number>(10);
   const active = useSignal<boolean>(false);
 

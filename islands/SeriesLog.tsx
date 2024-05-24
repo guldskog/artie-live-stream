@@ -9,7 +9,7 @@ interface Props {
 export default function SeriesLog(props: Props) {
   return (
     <>
-      {props.log.value.filter((_, index) => index < 20).map(
+      {props.log.value.filter((_, index) => index < 10).map(
         ({ time, seconds, pace, progress }) => {
           const newDate = new Date(time);
           newDate.setSeconds(newDate.getSeconds() + seconds);
