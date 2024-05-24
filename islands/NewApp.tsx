@@ -131,7 +131,7 @@ export default function App() {
 
   return (
     <div class="flex justify-end">
-      <Log pace={pace} log={log} />
+      <Log pace={pace} log={log} progress={progress} countdown={countdown} />
       {currentWR - progress.value < 0
         ? (
           <Victory

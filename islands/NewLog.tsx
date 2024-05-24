@@ -6,9 +6,12 @@ import { useEffect, useState } from "preact/hooks";
 import { logToCSV } from "../helpers/arrayToCSV.ts";
 import { downloadCSV } from "../helpers/downloadCSV.ts";
 import { formatDateTime } from "../helpers/formatDateTime.ts";
+import { currentWR } from "../helpers/constants.ts";
 interface Props {
   pace: Signal<number>;
   log: Signal<LogItem[]>;
+  countdown: Signal<string | undefined>;
+  progress: Signal<number>;
 }
 
 export default function Log(props: Props) {
@@ -34,11 +37,23 @@ export default function Log(props: Props) {
     };
   }, []);
 
+  const [hours, minutes, seconds] = (props.countdown.value || "24:00:00").split(
+    ":",
+  ).map(Number);
+
+  const minutesLeft = hours * 60 + minutes + Math.floor(seconds / 60);
+
   return (
     <div class="flex-grow flex flex-col gap-[50px] pl-[50px] py-[55px] mr-[50px] justify-end">
       <div class="border border-zinc-700 p-6 flex flex-col gap-[18px]">
         <div class="flex justify-between">
-          <div>pace selection</div>
+          <div>
+            pace selection{" "}
+            <span class="lowercase text-slate-400 text-[16px]">
+              - estimated{" "}
+              {(minutesLeft * props.pace.value) + props.progress.value}
+            </span>
+          </div>
           <div class="lowercase text-slate-400 text-[16px]">
             use ← and → for quick selection
           </div>
