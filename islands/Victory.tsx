@@ -65,7 +65,7 @@ export default function Victory(props: Props) {
         </div>
         <div class="text-3xl">
           Artie<br />
-          Christensen
+          Christenson
         </div>
         <div>broke the</div>
         <div class="text-3xl">
