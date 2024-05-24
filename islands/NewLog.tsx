@@ -2,14 +2,18 @@ import ErrorLog from "./ErrorLog.tsx";
 import SeriesLog from "./SeriesLog.tsx";
 import { LogItem } from "./NewApp.tsx";
 import { Signal } from "@preact/signals";
-import { useEffect } from "preact/hooks";
-
+import { useEffect, useState } from "preact/hooks";
+import { logToCSV } from "../helpers/arrayToCSV.ts";
+import { downloadCSV } from "../helpers/downloadCSV.ts";
+import { formatDateTime } from "../helpers/formatDateTime.ts";
 interface Props {
   pace: Signal<number>;
   log: Signal<LogItem[]>;
 }
 
 export default function Log(props: Props) {
+  const [downloading, setDownloading] = useState(false);
+
   useEffect(() => {
     const onKeyEvent = (event: KeyboardEvent) => {
       event.preventDefault();
@@ -48,7 +52,10 @@ export default function Log(props: Props) {
                   number === props.pace.value
                     ? "bg-[#FB923C] border-yellow-300"
                     : "bg-zinc-700 border-zinc-600"
-                } border  rounded-full grid place-items-center cursor-pointer`}
+                } border rounded-full grid place-items-center cursor-pointer`}
+                onClick={() => {
+                  props.pace.value = number;
+                }}
               >
                 <span>{number}</span>
               </div>
@@ -100,8 +107,30 @@ export default function Log(props: Props) {
         >
           clear app
         </div>
-        <div class="bg-zinc-600 border border-zinc-500 h-[45px] px-5 cursor-pointer pt-[13px] hover:border-orange-300 hover:bg-orange-400 hover:text-zinc-900">
-          export full log
+        <div
+          onClick={() => {
+            setDownloading(true);
+            if (props.log.value.length) {
+              const csvContent = logToCSV(
+                props.log.value.map(({ time, seconds, progress, pace }) => {
+                  const newDate = new Date(time);
+                  newDate.setSeconds(newDate.getSeconds() + seconds);
+
+                  const start = formatDateTime(new Date(time));
+                  const finished = formatDateTime(newDate);
+
+                  return {
+                    time: `${start} - ${finished}`,
+                    reps: `${progress} - ${progress + pace}`,
+                  };
+                }),
+              );
+              downloadCSV(csvContent, "full-log.csv");
+            }
+          }}
+          class="bg-zinc-600 border border-zinc-500 h-[45px] px-5 cursor-pointer pt-[13px] hover:border-orange-300 hover:bg-orange-400 hover:text-zinc-900"
+        >
+          {downloading ? "downloading..." : "export full log"}
         </div>
       </div>
     </div>
