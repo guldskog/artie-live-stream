@@ -15,20 +15,20 @@ export default function Progress(props: Props) {
   return (
     <div class="flex flex-col justify-center h-screen border-l border-l-zinc-700">
       <div class="w-[384px] flex p-5 gap-5">
-        <div class="flex flex-col">
+        <div class="flex flex-col w-[253px]">
           <div class="flex flex-col gap-3 pt-14 pb-11">
             <div class="flex relative">
               <img
-                class="w-[50px] absolute left-[28px] -bottom-[5px]"
+                class="w-[50px] absolute left-[10px] -bottom-[5px]"
                 src="./image-artie.png"
                 alt="Artie Christensen"
               />
               <img
-                class="w-[18px] absolute -top-[12px] left-[82px]"
+                class="w-[18px] absolute -top-[12px] left-[63px]"
                 src="./arrow.svg"
                 alt="Arrow Icon"
               />
-              <div class="pl-[99px] h-[38px] leading-[110%]">
+              <div class="pl-[78px] h-[38px] leading-[110%]">
                 Artie Christensen<br /> is breaking the
               </div>
             </div>
@@ -67,15 +67,15 @@ export default function Progress(props: Props) {
             </div>
           </div>
         </div>
-        <div class="w-[70px] bg-zinc-900 border border-zinc-700 rounded-xl shadow-[0_0_10px_0px_rgba(0,0,0,.3)] p-[7px]">
+        <div class="w-[71px] bg-zinc-900 border border-zinc-700 rounded-xl shadow-[0_0_10px_0px_rgba(0,0,0,.3)] p-[8px]">
           <div class="bg-zinc-950 relative h-full rounded outline outline-2 outline-zinc-950 border border-zinc-700">
             <div class="absolute w-full h-[80%] bottom-0">
               <div class="absolute w-full flex flex-col h-full bottom-0">
                 <div class="absolute top-0 w-full -translate-y-full">
-                  <div class="text-[10px] leading-none text-center h-[22px] mb-[5px]">
+                  <div class="text-[11px] leading-none text-center h-[22px] mb-[7px]">
                     world<br />record
                   </div>
-                  <div class="h-[1px] w-[59px] relative -left-[8px] bg-orange-400">
+                  <div class="h-[1px] w-[69px] relative -left-[9px] bg-orange-400">
                   </div>
                 </div>
                 <div class="bg-[rgba(255,255,255,.05)] flex-grow w-full rounded-b-[3px]">
@@ -91,11 +91,11 @@ export default function Progress(props: Props) {
               >
                 <div class="absolute top-0 w-full -translate-y-full">
                   {currentWR - props.progress.value > 300 && (
-                    <div class="text-[11px] leading-none text-center h-[11px] mb-[5px]">
+                    <div class="text-[11px] leading-none text-center h-[11px] mb-[7px]">
                       Artie
                     </div>
                   )}
-                  <div class="h-[1px] w-[59px] relative -left-[8px] bg-orange-400">
+                  <div class="h-[1px] w-[69px] relative -left-[9px] bg-orange-400">
                   </div>
                 </div>
                 <div class="bg-[#FB923C] flex-grow w-full rounded-b-[3px]">

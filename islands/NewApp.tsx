@@ -46,6 +46,7 @@ export default function App() {
       progress.value = log.value[0].progress + log.value[0].pace;
       pace.value = log.value[0].pace ? log.value[0].pace : 10;
       active.value = log.value[0].seconds === 0;
+      startTime.value = new Date(log.value[log.value.length - 1].time);
 
       updateCountdown(new Date(log.value[log.value.length - 1].time));
       setInterval(
