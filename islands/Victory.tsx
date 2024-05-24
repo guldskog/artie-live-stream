@@ -44,9 +44,13 @@ export default function Victory(props: Props) {
         <div>total nb of pull-ups</div>
         <div class="text-[47px]">
           {formatNumberWithCommas(props.progress.value)}
-          <span class="absolute">*</span>
+          <span class="absolute">
+            <sup>*</sup>
+          </span>
         </div>
-        <div class="text-zinc-900 opacity-35">pending validation*</div>
+        <div class="text-zinc-900 opacity-35">
+          pending validation<sup>*</sup>
+        </div>
         <div class="w-full bg-zinc-700 h-[1px] opacity-20"></div>
         <div>time remaining</div>
         <div class="text-[47px]">{props.countdown.value}</div>
