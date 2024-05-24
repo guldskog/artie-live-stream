@@ -55,7 +55,7 @@ export default function Victory(props: Props) {
       <div class="relative w-[384px] flex p-5 gap-5 flex-col text-center text-zinc-900 text-[17px]">
         <div>
           <img
-            class="w-[150px] ml-[90px]"
+            class="w-[217px] ml-[57px]"
             src="./artie-image-winner.png"
             alt="Artie Christenson new WR"
           />
