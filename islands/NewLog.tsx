@@ -44,7 +44,7 @@ export default function Log(props: Props) {
   const minutesLeft = hours * 60 + minutes + Math.floor(seconds / 60);
 
   return (
-    <div class="flex-grow flex flex-col gap-[50px] pl-[50px] py-[55px] mr-[50px] justify-end">
+    <div class="flex-grow flex flex-col gap-[50px] pl-[50px] py-[55px] pr-[50px] justify-end bg-[rgba(9,9,11,.5)]">
       <div class="border border-zinc-700 p-6 flex flex-col gap-[18px]">
         <div class="flex justify-between">
           <div>
