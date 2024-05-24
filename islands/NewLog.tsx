@@ -84,8 +84,8 @@ export default function Log(props: Props) {
               latest series
             </div>
             <div class="text-slate-500 lowercase">
-              press the <span class="text-orange-400">f</span>{" "}
-              key to flag an error
+              press the <span class="text-orange-400">[space]</span>{" "}
+              key to add a serie
             </div>
           </div>
           <div class="pt-[10px]">
@@ -93,7 +93,13 @@ export default function Log(props: Props) {
           </div>
         </div>
         <div class="px-6 flex-1">
-          <div>errors</div>
+          <div class="flex justify-between">
+            <div>errors</div>
+            <div class="text-slate-500 lowercase">
+              press the <span class="text-orange-400">[f]</span>{" "}
+              key to flag an error
+            </div>
+          </div>
           <div class="pt-[10px]">
             <ErrorLog />
           </div>
