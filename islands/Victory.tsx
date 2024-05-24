@@ -1,11 +1,7 @@
 import { Signal } from "@preact/signals";
-import { formatNumberWithCommas } from "../helpers/formatNumberWithCommas.ts";
-import { currentWR } from "../helpers/constants.ts";
+import { useEffect, useState } from "preact/hooks";
 import { formatDate } from "../helpers/formatDate.tsx";
-import { calculatePercentage } from "../helpers/calculatePercentage.ts";
-import { countdownFrom24Hours } from "../helpers/countdownFrom24hours.ts";
-import { useRef } from "preact/hooks";
-import { formatDateTime } from "../helpers/formatDateTime.ts";
+import { formatNumberWithCommas } from "../helpers/formatNumberWithCommas.ts";
 
 interface Props {
   progress: Signal<number>;
@@ -14,7 +10,15 @@ interface Props {
 }
 
 export default function Victory(props: Props) {
-  const wrBrokenAt = useRef(formatDate(new Date(), true));
+  const [wrBrokenAt, setWrBrokenAt] = useState(formatDate(new Date(), true));
+
+  useEffect(() => {
+    if (!window.localStorage.getItem("record-time")) {
+      window.localStorage.setItem("record-time", wrBrokenAt);
+    } else {
+      setWrBrokenAt(window.localStorage.getItem("record-time") || "");
+    }
+  }, []);
 
   return (
     <div class="flex flex-col justify-center bg-orange-400 h-screen">
@@ -27,7 +31,7 @@ export default function Victory(props: Props) {
           />
         </div>
         <div class="w-[150px] mx-auto">
-          {wrBrokenAt.current}
+          {wrBrokenAt}
         </div>
         <div class="text-[47px]">
           Artie<br />
