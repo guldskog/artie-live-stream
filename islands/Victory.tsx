@@ -69,7 +69,7 @@ export default function Victory(props: Props) {
         </div>
         <div>broke the</div>
         <div class="text-3xl">
-          world<br />record
+          world record
         </div>
         <div>of the most</div>
         <div class="text-3xl">PULL-ups</div>
