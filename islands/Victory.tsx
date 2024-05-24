@@ -4,6 +4,8 @@ import { currentWR } from "../helpers/constants.ts";
 import { formatDate } from "../helpers/formatDate.tsx";
 import { calculatePercentage } from "../helpers/calculatePercentage.ts";
 import { countdownFrom24Hours } from "../helpers/countdownFrom24hours.ts";
+import { useRef } from "preact/hooks";
+import { formatDateTime } from "../helpers/formatDateTime.ts";
 
 interface Props {
   progress: Signal<number>;
@@ -12,6 +14,8 @@ interface Props {
 }
 
 export default function Victory(props: Props) {
+  const wrBrokenAt = useRef(formatDate(new Date(), true));
+
   return (
     <div class="flex flex-col justify-center bg-orange-400 h-screen">
       <div class="w-[384px] flex p-5 gap-5 flex-col text-center text-zinc-900 text-[17px]">
@@ -22,9 +26,8 @@ export default function Victory(props: Props) {
             alt="Artie Christensen new WR"
           />
         </div>
-        <div>
-          on june 23 2024<br />
-          at 17:32:43 cet
+        <div class="w-[150px] mx-auto">
+          {wrBrokenAt.current}
         </div>
         <div class="text-[47px]">
           Artie<br />

@@ -1,4 +1,4 @@
-import { formatTime } from "./formatTime.ts";
+import { formatNumberTime } from "./formatNumberTime.ts";
 
 export const countdownFrom24Hours = (startTime: Date): string => {
   const currentTime = new Date();
@@ -11,5 +11,5 @@ export const countdownFrom24Hours = (startTime: Date): string => {
     return "00:00:00";
   }
 
-  return formatTime(remainingTimeInSeconds);
+  return formatNumberTime(remainingTimeInSeconds);
 };
