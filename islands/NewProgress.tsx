@@ -1,7 +1,6 @@
 import { Signal } from "@preact/signals";
 import { formatNumberWithCommas } from "../helpers/formatNumberWithCommas.ts";
 import { currentWR } from "../helpers/constants.ts";
-import { countdownFrom24Hours } from "../helpers/countdownFrom24hours.ts";
 import { formatDate } from "../helpers/formatDate.tsx";
 import { calculatePercentage } from "../helpers/calculatePercentage.ts";
 
@@ -39,7 +38,7 @@ export default function Progress(props: Props) {
             <div class="text-center text-[40px] text-orange-400">
               PULL-ups
             </div>
-            <div class="text-center">in 24 hours</div>
+            <div class="text-center">in one hour</div>
           </div>
           <div class="bg-zinc-700 h-[1px] w-full"></div>
           <div class="pt-11 pb-11 text-center flex flex-col gap-2">

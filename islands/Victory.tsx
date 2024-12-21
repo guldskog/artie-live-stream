@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { formatDate } from "../helpers/formatDate.tsx";
 import { formatNumberWithCommas } from "../helpers/formatNumberWithCommas.ts";
 
@@ -73,7 +73,7 @@ export default function Victory(props: Props) {
         </div>
         <div>of the most</div>
         <div class="text-3xl">PULL-ups</div>
-        <div>in 24 hours</div>
+        <div>in one hour</div>
         <div class="w-full bg-zinc-700 h-[1px] opacity-20"></div>
         <div>total nb of pull-ups</div>
         <div class="text-3xl">

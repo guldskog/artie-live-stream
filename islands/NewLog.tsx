@@ -36,7 +36,7 @@ export default function Log(props: Props) {
     };
   }, []);
 
-  const [hours, minutes, seconds] = (props.countdown.value || "24:00:00").split(
+  const [hours, minutes, seconds] = (props.countdown.value || "01:00:00").split(
     ":",
   ).map(Number);
 

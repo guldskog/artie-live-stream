@@ -1,1 +1,1 @@
-export const currentWR = 8940;
+export const currentWR = 1131;

@@ -2,7 +2,7 @@ import Progress from "../islands/NewProgress.tsx";
 import Log from "../islands/NewLog.tsx";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
-import { countdownFrom24Hours } from "../helpers/countdownFrom24hours.ts";
+import { countdownFromOneHour } from "../helpers/countdownFromOneHour.ts";
 import { currentWR } from "../helpers/constants.ts";
 import Victory from "./Victory.tsx";
 import { getDifferenceInSeconds } from "../helpers/getDifferencesInSeconds.ts";
@@ -33,7 +33,7 @@ export default function App() {
   );
 
   const updateCountdown = (currentTime: Date) =>
-    countdown.value = countdownFrom24Hours(currentTime);
+    countdown.value = countdownFromOneHour(currentTime);
 
   useEffect(() => {
     log.value = JSON.parse(
